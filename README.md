@@ -8,4 +8,4 @@ This project aims to implement some of the operations within the ISA supported b
 - [ ] A **USB cable** for powering the board.
 
 # Software Requirements:
-- [ ] The **Vivado** integrated development environment for **VHDL** coding.
+- [ ] The **Xilinx Vivado IDE** for **VHDL** coding.
