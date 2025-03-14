@@ -1,0 +1,14 @@
+Un exemplu de problema realizabila prin intermediul operatiilor MIPS implementate este urmatoarea:
+Sa se calculeze suma primelor N numere naturale, unde N este un numar aflat la adresa $4 din memoria de date, si
+rezultatul se va stoca la adresa $12 din memoria de date.
+
+Solutie:
+
+    B"000000_01100_01100_01100_00000_100110", -- xor $12, $12, $12 (sum = 0)
+    B"001000_00100_00100_0000000000000001", -- addi $4, $4, 1 (N++ - workaround pentru ca nu am implementat bgt)
+    B"100011_00000_00001_0000000000000001", -- lw $1, 1($0) (counter = 1)
+    B"000100_00001_00100_0000000000000011", -- beq $1, $4, 3 ("while (counter <= N_initial)" / "if (counter > N_initial) break;")
+    B"000000_01100_01100_00001_00000_100000", -- add $12, $12, $1 (sum += counter)
+    B"001000_00001_00001_0000000000000001", -- addi $1, $1, 1 (counter ++)
+    B"000010_00000000000000000000000011", -- j 3 ("continue" / "end while")
+    B"000000_00000_00000_00000_00000_000000" -- sll $0, $0, $0 (NOOP)
